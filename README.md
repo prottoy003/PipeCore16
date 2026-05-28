@@ -1,7 +1,6 @@
 # 16-Bit 5-Stage Pipelined RISC CPU
 
 A complete, synthesizable, educational RISC processor in SystemVerilog.  
-Designed for VLSI/ASIC portfolios, RTL internship applications, and GitHub/LinkedIn showcase.
 
 ---
 
@@ -322,11 +321,11 @@ The preloaded program demonstrates every feature:
 3. Under **"Languages & Libraries"** dropdown, select:
    - **SystemVerilog/Verilog**
 4. Under **"Simulators"** dropdown, choose one of:
-   - ✅ **Aldec Riviera-PRO 2022.04** (recommended)
-   - ✅ **Cadence Xcelium 20.09** (also works)
+   -  **Aldec Riviera-PRO 2022.04** (recommended)
+   -  **Cadence Xcelium 20.09** (also works)
 5. In the **Design** pane: paste the entire contents of `cpu_complete.sv`
 6. Leave the **Testbench** pane **empty** (testbench is included in the design file)
-7. Check ✅ **"Open EPWave after run"**
+7. Check  **"Open EPWave after run"**
 8. Click **Run**
 
 **Simulator flags** (if needed for Riviera-PRO):
@@ -482,4 +481,4 @@ risc_cpu/
 
 ---
 
-Aquib Ahmed Prottoy *
+Written and Compiled by: Aquib Ahmed Prottoy *
