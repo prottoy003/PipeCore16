@@ -16,7 +16,6 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 9. [Waveform Guide (GTKWave)](#waveform-guide-gtkwave)
 10. [Expected Simulation Output](#expected-simulation-output)
 11. [Folder Structure](#folder-structure)
-12. [Portfolio Notes](#portfolio-notes)
 
 ---
 
@@ -446,38 +445,6 @@ risc_cpu/
 │
 └── README.md
 ```
-
----
-
-## Portfolio Notes
-
-### What This Project Demonstrates
-
-**RTL Design Skills:**
-- Synthesizable SystemVerilog (no `#delays` in RTL, pure FF + combinational)
-- Proper clock domain discipline (all state in `always_ff`)
-- Clean module hierarchy and parameterization
-
-**Computer Architecture Concepts:**
-- Classic 5-stage RISC pipeline (same structure as MIPS/RISC-V)
-- Data hazard classification (RAW, WAR, WAW)
-- Forwarding implementation (the industry-standard solution)
-- Load-use hazard detection and stall insertion
-- Branch penalty and flush logic
-
-**Verification Skills:**
-- Structured self-checking testbench
-- VCD waveform generation
-- Pipeline visibility instrumentation (debug ports)
-- Expected-vs-actual assertion pattern
-
-### Suggested Improvements for Advanced Showcase
-- Add branch prediction (static predict-not-taken)
-- Implement all 16 opcodes (shift, multiply, jump-register)
-- Add a 5-stage hazard detection that also flushes ID/EX on branch
-- Parameterize data/register widths
-- Add synthesis constraints and run through Yosys or Vivado
-- Write a Python assembler for the custom ISA
 
 ---
 
