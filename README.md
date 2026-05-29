@@ -390,7 +390,9 @@ Cycle 20 | PC=16 | Instr=0x6241 | ALU=    0 | [BRANCH-TAKEN]
   Result: 10/10 checks PASSED
   *** ALL TESTS PASSED — CPU IS FUNCTIONAL ***
 ```
-
+<p align="center">
+  <img src="docs/Wave output.png" width="800"/>
+</p>
 ---
 
 ## Folder Structure
