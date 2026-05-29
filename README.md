@@ -1,6 +1,12 @@
 # 16-Bit 5-Stage Pipelined RISC CPU
 
-A complete, synthesizable, educational RISC processor in SystemVerilog.  
+PipeCore16 is a custom-designed 16-bit pipelined RISC processor implemented in SystemVerilog. The project demonstrates fundamental computer architecture and RTL design concepts including pipelining, hazard detection, forwarding, branch handling, and modular CPU design.
+
+## Live Simulation
+
+Run the project directly on EDA Playground:
+
+https://www.edaplayground.com/x/fMga
 
 ---
 
