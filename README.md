@@ -219,8 +219,7 @@ The branch target comes from `exmem_branch_target`.
 
 ## Forwarding Unit Deep Dive
 
-
-       <p align="center">
+  <p align="center">
   <img src="docs/Forwarding Mux.png" width="800"/>
 </p>
 
