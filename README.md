@@ -38,27 +38,9 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 ## Architecture
 
 ```
-  ┌────────────────────────────────────────────────────────┐
-  │                16-BIT RISC PIPELINE                    │
-  │                                                        │
-  │  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐   │
-  │  │  IF  │→ │  ID  │→ │  EX  │→ │ MEM  │→ │  WB  │   │
-  │  │      │  │      │  │      │  │      │  │      │   │
-  │  │  PC  │  │ Ctrl │  │ ALU  │  │ DMEM │  │  Mux │   │
-  │  │ IMEM │  │  RF  │  │ Fwd  │  │      │  │  RF  │   │
-  │  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘   │
-  │      ↕         ↕         ↕                            │
-  │   IF/ID     ID/EX     EX/MEM    MEM/WB                │
-  │                                                        │
-  │  ┌─────────────────────────────┐                      │
-  │  │      HAZARD DETECTION       │← stall signals       │
-  │  └─────────────────────────────┘                      │
-  │  ┌─────────────────────────────┐                      │
-  │  │        FORWARDING UNIT      │← MUX selects         │
-  │  └─────────────────────────────┘                      │
-  └────────────────────────────────────────────────────────┘
-```
+<img width="1096" height="779" alt="image" src="https://github.com/user-attachments/assets/2e960611-d5d9-4836-9d74-f82bd4a75867" />
 
+```
 ### Pipeline Stage Responsibilities
 
 | Stage | Hardware | Key Operations |
