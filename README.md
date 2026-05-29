@@ -38,7 +38,10 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 ## Architecture
 
 ```
-<img width="1096" height="779" alt="image" src="https://github.com/user-attachments/assets/2e960611-d5d9-4836-9d74-f82bd4a75867" />
+<p align="center">
+  <img src="docs/Architecture.png" width="800"/>
+</p>
+
 
 ```
 ### Pipeline Stage Responsibilities
@@ -83,13 +86,9 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 ### Instruction Format
 
 ```
-R-Type (ADD, SUB, AND, OR):
- 15  14  13  12 | 11  10   9 |  8   7   6 |  5   4   3 |  2   1   0
-[  opcode [3:0] | rs   [2:0] | rt   [2:0] | rd   [2:0] | ---  ---  ---]
-
-I-Type (LOAD, STORE, BEQ, ADDI):
- 15  14  13  12 | 11  10   9 |  8   7   6 |  5   4   3   2   1   0
-[  opcode [3:0] | rs   [2:0] | rd   [2:0] |        imm6 [5:0]        ]
+<p align="center">
+  <img src="docs/Instruction format.png" width="700"/>
+</p>
 ```
 
 ### Opcode Table
@@ -170,9 +169,9 @@ Self-checking testbench with 10 assertions, per-cycle monitoring, VCD dump.
 #### Read-After-Write (RAW) — Solved by Forwarding
 
 ```
-Cycle:        1    2    3    4    5
-ADD R4,R1,R2 IF   ID   EX  MEM   WB   <- writes R4 at end of WB (cycle 5)
-SUB R5,R4,R3      IF   ID   EX  MEM   <- needs R4 during EX (cycle 4)!
+<p align="center">
+  <img src="docs/Raw Data Hazard.png" width="800"/>
+</p>
 ```
 
 **Without forwarding**: R4 has old value during SUB's EX stage → wrong result.  
@@ -183,18 +182,17 @@ The mux before ALU input A selects `exmem_alu_result` instead of the stale regis
 #### Load-Use Hazard — Requires Stall
 
 ```
-Cycle:         1    2    3    4    5    6
-LOAD R7, MEM  IF   ID   EX  MEM   WB   <- R7 ready after MEM (cycle 5)
-ADD  R5,R7,R3      IF   ID   EX  MEM   <- needs R7 in EX (cycle 4) — TOO EARLY!
+<p align="center">
+  <img src="docs/Load Use Hazard.png" width="800"/>
+</p>
 ```
 
 Even with forwarding, the data isn't available in time. Solution:
 
 ```
-Cycle:         1    2    3    4    5    6    7
-LOAD R7, MEM  IF   ID   EX  MEM   WB            <- R7 ready
-[NOP bubble]       IF   ID [NOP]  EX  MEM  WB   <- inserted stall
-ADD R5,R7,R3            IF   ID   EX  MEM  WB   <- now gets R7 via MEM/WB fwd
+<p align="center">
+  <img src="docs/Forwarding.png" width="800"/>
+</p>
 ```
 
 The HDU:
@@ -211,11 +209,9 @@ Two instructions have already been fetched incorrectly.
 The branch target comes from `exmem_branch_target`.
 
 ```
-Cycle:      1    2    3    4    5
-BEQ         IF   ID   EX  MEM   WB
-instr+1          IF   ID   EX  ← FLUSHED on branch taken
-instr+2               IF  ← FLUSHED on branch taken  
-target                     IF   ID  EX  MEM  WB
+<p align="center">
+  <img src="docs/Pipeline Flush.png" width="800"/>
+</p>
 ```
 
 > **Note**: This design flushes only the IF/ID register. A full 2-instruction flush  
@@ -228,14 +224,9 @@ target                     IF   ID  EX  MEM  WB
 ## Forwarding Unit Deep Dive
 
 ```
-                    ┌─────────┐
-        EX/MEM  ────┤  2'b10  │
-                    │         │────→ ALU Input A
-        MEM/WB  ────┤  2'b01  │
-                    │         │
-        RF out  ────┤  2'b00  │
-                    └─────────┘
-                      (MUX)
+       <p align="center">
+  <img src="docs/Forwarding Mux.png" width="800"/>
+</p>
 ```
 
 **Priority rule**: If both EX/MEM and MEM/WB want to forward to the same ALU input,  
