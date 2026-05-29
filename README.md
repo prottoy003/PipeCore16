@@ -38,9 +38,7 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 ## Architecture
 
 ```
-<p align="center">
-  <img src="docs/Architecture.png" width="800"/>
-</p>
+![Architecture](docs/architecture.png)
 
 
 ```
