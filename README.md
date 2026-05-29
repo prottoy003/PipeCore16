@@ -213,8 +213,7 @@ The branch target comes from `exmem_branch_target`.
 
 > **Note**: This design flushes only the IF/ID register. A full 2-instruction flush  
 > would require also flushing ID/EX, giving a 2-cycle penalty. The current design  
-> handles this conservatively — for a portfolio project this is acceptable and matches  
-> many textbook implementations.
+> handles this conservatively. 
 
 ---
 
