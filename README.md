@@ -37,10 +37,10 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 
 ## Architecture
 
-```
+
 <img src="docs/Architecture.png" alt="Architecture" width="700"/>
 
-```
+
 ### Pipeline Stage Responsibilities
 
 | Stage | Hardware | Key Operations |
@@ -82,11 +82,11 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 
 ### Instruction Format
 
-```
+
 <p align="center">
   <img src="docs/Instruction format.png" width="700"/>
 </p>
-```
+
 
 ### Opcode Table
 
@@ -165,11 +165,11 @@ Self-checking testbench with 10 assertions, per-cycle monitoring, VCD dump.
 
 #### Read-After-Write (RAW) — Solved by Forwarding
 
-```
+
 <p align="center">
   <img src="docs/Raw Data Hazard.png" width="800"/>
 </p>
-```
+
 
 **Without forwarding**: R4 has old value during SUB's EX stage → wrong result.  
 **With forwarding**: EX/MEM pipeline register already holds the ALU result from ADD.  
@@ -178,19 +178,19 @@ The mux before ALU input A selects `exmem_alu_result` instead of the stale regis
 
 #### Load-Use Hazard — Requires Stall
 
-```
+
 <p align="center">
   <img src="docs/Load Use Hazard.png" width="800"/>
 </p>
-```
+
 
 Even with forwarding, the data isn't available in time. Solution:
 
-```
+
 <p align="center">
   <img src="docs/Forwarding.png" width="800"/>
 </p>
-```
+
 
 The HDU:
 1. Freezes PC (so same instruction is re-fetched)
@@ -205,11 +205,11 @@ Two instructions have already been fetched incorrectly.
 **Strategy**: Flush IF/ID when branch is taken (1-cycle penalty in this implementation).  
 The branch target comes from `exmem_branch_target`.
 
-```
+
 <p align="center">
   <img src="docs/Pipeline Flush.png" width="800"/>
 </p>
-```
+
 
 > **Note**: This design flushes only the IF/ID register. A full 2-instruction flush  
 > would require also flushing ID/EX, giving a 2-cycle penalty. The current design  
@@ -220,11 +220,11 @@ The branch target comes from `exmem_branch_target`.
 
 ## Forwarding Unit Deep Dive
 
-```
+
        <p align="center">
   <img src="docs/Forwarding Mux.png" width="800"/>
 </p>
-```
+
 
 **Priority rule**: If both EX/MEM and MEM/WB want to forward to the same ALU input,  
 EX/MEM wins — it holds the **more recent** value.
