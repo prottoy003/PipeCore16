@@ -38,8 +38,7 @@ A complete, synthesizable, educational RISC processor in SystemVerilog.
 ## Architecture
 
 ```
-![Architecture](docs/Architecture.png)
-
+![Architecture](docs/Architecture%20.png)
 
 ```
 ### Pipeline Stage Responsibilities
